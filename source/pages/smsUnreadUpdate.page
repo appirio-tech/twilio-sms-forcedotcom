@@ -1,0 +1,6 @@
+<apex:page StandardController="SMS_Message__c" showHeader="false" extensions="SMSunreadUpdate" action="{!checkStatus}">
+    <!-- This page is hidden on the SMS inbound layout and will flip status from Unread to Read when viewed in browser -->
+    
+    <!--Status field included so it is queried by standard controller and passed to extension -->
+    <apex:outputField value="{!SMS_Message__c.Status__c}" rendered="false"/>
+</apex:page>

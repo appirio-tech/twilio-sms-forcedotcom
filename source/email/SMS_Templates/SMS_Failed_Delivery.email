@@ -1,0 +1,6 @@
+The following SMS message has failed delivery.
+
+Name: {!SMS_Message__c.Name}
+Link: {!SMS_Message__c.Link}
+Status: {!SMS_Message__c.Status__c}
+Message: {!SMS_Message__c.Message__c}

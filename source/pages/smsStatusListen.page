@@ -1,0 +1,3 @@
+<apex:page controller="SMSStatusListenController" showHeader="false" standardStylesheets="false" action="{!updateStatus}" cache="false">
+	<!-- This page listens for the Twilio SMS status callback and updates the SMS_Message__c with delivery status -->
+</apex:page>

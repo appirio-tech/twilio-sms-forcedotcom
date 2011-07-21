@@ -1,0 +1,31 @@
+<apex:page controller="TwilioSettingsController">
+    <apex:sectionHeader title="Twilio Settings"/>
+    
+    <apex:pageMessages />
+    
+    <apex:form >
+        <apex:pageBlock title="Settings" mode="edit">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!settings.Account_Sid__c}"/>
+                <apex:inputField value="{!settings.Auth_Token__c}"/>
+                <apex:inputField value="{!settings.Primary_Phone__c}"/>
+                <apex:inputField value="{!settings.Twilio_Status_Listen_Page__c}" style="width: 450px"/>
+                <apex:inputField value="{!settings.Unsubscribe_Keywords__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Other Setup" columns="1">
+                Add the Visualforce page "smsInboundListen" to a force.com site and enter the URL of this page on your Twilio.com dashboard as the SMS URL. <br/><br/>
+                
+                The Site Guest User profile needs the following object permissions for this work work correctly:<br/>
+                Contact: Read<br/>
+                SMS Message: Read,Create<br/><br/>
+                
+                The Site Guest User profile requires the follow edit field level permission: <br/>
+                Contact: Owner, Mobile Phone, SMS_Enabled <br/>
+                SMS Message: All fields
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

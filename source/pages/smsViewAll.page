@@ -1,0 +1,46 @@
+<apex:page StandardController="Contact" extensions="SMSViewAllController">
+    <apex:sectionHeader title="SMS Conversation" subtitle="{!Contact.Name}"/>
+
+    <apex:form >
+        <apex:commandButton value="Back to Contact" action="{!cancel}"/><br/>
+        
+        <apex:repeat value="{!messages}" var="msg">
+            <div class="smsMessage {!IF(msg.Direction__c ='Outbound','right','')}">
+                <span class="body {!LOWER(msg.Direction__c)}">{!msg.Message__c}</span>
+                <div class="time"><apex:outputField value="{!msg.Date_Sent__c}"/></div>
+            </div>
+        </apex:repeat><br/>
+    
+        <apex:commandButton value="Back to Contact" action="{!cancel}"/>    
+    </apex:form>
+    
+    <!-- Inline style for for ease of review, could/should be in external stylesheet -->
+    <style> 
+        .inbound{
+            background-color: #D2D2D2;
+        }
+        .outbound{
+            background-color: #95D749;
+        }
+        .smsMessage{
+            margin: 12px;
+            width: 200px;
+        }
+        .body{
+            border-radius: 5px 5px 5px 5px;
+            box-shadow: 1px 1px 2px black;
+            -moz-border-radius: 5px 5px 5px 5px;
+            -moz-box-shadow: 1px 1px 2px black;
+            -webkit-border-radius: 5px 5px 5px 5px;
+            -webkit-box-shadow: 1px 1px 2px black;
+            padding: 5px;
+        }
+        .right{
+            text-align: right;
+        }
+        .time{
+            font-size: 10px;
+            margin-top: 5px;
+        }
+    </style>
+ </apex:page>

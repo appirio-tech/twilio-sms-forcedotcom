@@ -1,0 +1,13 @@
+Twilio SMS for Force.com
+
+URL: http://www.cloudspokes.com/challenge_detail.html?contestID=182
+Blog: http://blog.cloudspokes.com/2011/05/5-twilio-sms-for-forcecom-winners-w00t.html
+Challenge end date: Mon May 09 02:00:00 GMT 2011
+
+Description
+===========
+We would like to send and receive SMS messages for contacts in Salesforce.com. The outgoing SMS message will be configurable and will be tracked against the contact record including all responses. Recipients of the message must be able to SMS a response back to the system and be attached to the sending contact’s record.
+
+Requirements
+============
+<p>Create a new custom object to store SMS messages <br> - Each message will contain a message text, date of the message was sent. <br> - Messages will be stored as a related list to contacts. <br> - Incoming and outgoing messages will be stored in this list.</p> <p>Sending a message <br> - Select a contact to send SMS to. Contact must have a mobile phone and SMS enables = true (this field must be added to the contact)</p> <p>Message Format <br> - Messages will only be sent in the ANSI character set. <br> - Messages length must be less than or equal to 160 characters.</p> <p>Message Response <br> - Provide opt-out functionality. If a person texts STOP (case insentive), update their contact record to opt out of SMS messages. Set SMS enabled = false <br> - Store the date of the message, text of the message and the sender. <br> - The incoming message will be stored to a contact based on the sender&#39;s phone number.</p>

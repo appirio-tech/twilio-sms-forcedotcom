@@ -1,0 +1,78 @@
+<apex:page StandardController="SMS_Message__c" extensions="SMSSendController">
+   <apex:sectionHeader title="Send SMS" subtitle="{!con.Name}"/>
+   
+   <apex:pageMessages />
+   
+   <apex:form >
+       <apex:pageBlock title="SMS Details" mode="edit">
+           <apex:pageBlockButtons location="bottom">
+               <apex:commandButton value="Send SMS" action="{!sendSMS}" rendered="{!con.SMS_Enabled__c = true}"/>
+               <apex:commandButton value="Cancel" action="{!cancel}"/>
+           </apex:pageBlockButtons>
+           
+           <apex:pageBlockSection title="Recipient" collapsible="false" columns="1" id="contactInfo" rendered="{!con.SMS_Enabled__c = true}">
+               <apex:inputField value="{!SMS_Message__c.Contact__c}" required="true"/>
+               <apex:inputField value="{!SMS_Message__c.To__c}" required="true"/>
+               <apex:pageBlockSectionItem helpText="If checked, contact will be updated with mobile number above.">
+                   <apex:outputLabel value="Update Mobile #?"/>
+                   <apex:inputCheckbox value="{!updateMobile}"/>
+               </apex:pageBlockSectionItem>
+           </apex:pageBlockSection>
+           
+           <apex:pageBlockSection title="Message" collapsible="false" columns="1" rendered="{!con.SMS_Enabled__c = true}">
+               <apex:pageBlockSectionItem >
+                   <apex:outputLabel value="Message"/>
+                   <apex:outputPanel >
+                       <apex:inputField value="{!SMS_Message__c.Message__c}" styleClass="smsMessage" required="true"/>
+                       Characters remaining: <span id="count">160</span>
+                   </apex:outputPanel>
+               </apex:pageBlockSectionItem>
+               <apex:inputField value="{!SMS_Message__c.Notification__c}"/>
+           </apex:pageBlockSection>
+           
+           <!--Render this section with message if contact is not SMS Enabled -->
+           <apex:pageBlockSection id="smsDisableMessage" rendered="{!con.SMS_Enabled__c = false}" columns="1">
+               <apex:pagemessage severity="warning" strength="3" summary="SMS is not enabled for this Contact."/>
+           </apex:pageBlockSection>
+       </apex:pageBlock>
+   </apex:form>
+	
+	<!-- Script to count the remaining number of characters -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"/>
+	<script>
+		var j$ = jQuery.noConflict();
+		
+		j$(document).ready(function(){
+		    updateRemaining();
+		    j$(".smsMessage").bind('input keyup paste', function(){ 
+		        updateRemaining();
+		    });
+		});
+       
+		function updateRemaining(){
+		    var count = j$("#count")
+		    var length = j$(".smsMessage").val().length;
+		    var remaining = 160 - length;
+		    count.text(remaining);
+		    
+		    if(remaining < 0){
+		        count.addClass('red');
+		    }else{
+		        count.removeClass('red');
+		    }
+		}
+	</script>
+  
+  	<!-- Inline style for for ease of review, could/should be in external stylesheet -->
+	<style>
+	    .smsMessage{
+	        width: 135px;
+	        height: 150px;
+	    }
+	    .red{
+	        color: #CC0000;
+	        font-weight: bold;
+	    }
+	
+	</style>
+</apex:page>

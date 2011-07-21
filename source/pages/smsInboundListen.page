@@ -1,0 +1,4 @@
+<apex:page controller="SMSInboundListenController" contentType="text/xml" showHeader="false" standardStylesheets="false" action="{!processMessage}" cache="false">
+	<!-- This page listens for SMS messages sent from Twilio -->
+	{!response}
+</apex:page>
