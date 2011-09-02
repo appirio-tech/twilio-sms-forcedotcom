@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
+        <members>SMSInboundListenController</members>
+        <members>SMSSendController</members>
+        <members>SMSStatusListenController</members>
+        <members>SMSViewAllController</members>
+        <members>SMSunreadUpdate</members>
+        <members>TwilioSettingsController</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>*</members>
-        <name>ApexComponent</name>
-    </types>
-    <types>
-        <members>*</members>
+        <members>smsInboundListen</members>
+        <members>smsSend</members>
+        <members>smsStatusListen</members>
+        <members>smsUnreadUpdate</members>
+        <members>smsViewAll</members>
+        <members>twilioSettings</members>
         <name>ApexPage</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
     </types>
     <types>
         <members>SMS_TehNrd</members>
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Contact.SMS_Enabled__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>SMS_Message__c</members>
+        <members>Twilio_Settings__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -39,10 +46,6 @@
         <members>SMS_Message__c-Inbound Layout</members>
         <members>SMS_Message__c-Outbound Layout</members>
         <name>Layout</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>StaticResource</name>
     </types>
     <types>
         <members>SMS_Message__c</members>
